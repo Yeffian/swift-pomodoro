@@ -78,20 +78,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
-                HStack {
-                    Text("I want to work for")
-                    Spacer()
-                    TextField("I want to work for", value: $workTime, formatter: formatter)
-                        .textFieldStyle(.roundedBorder)
-                }
-             
-                HStack {
-                    Text("I want to rest for")
-                    Spacer()
-                    TextField("I want to rest for", value: $restTime, formatter: formatter)
-                        .textFieldStyle(.roundedBorder)
-                }
-                
                 Text(status)
                     .fontWeight(.bold)
                     .font(.largeTitle)
@@ -113,6 +99,20 @@ struct ContentView: View {
                 }
                 .padding()
                 .frame(maxWidth: 500)
+                
+                HStack {
+                    Text("I want to work for")
+                    Spacer()
+                    TextField("I want to work for", value: $workTime, formatter: formatter)
+                        .textFieldStyle(.roundedBorder)
+                }
+             
+                HStack {
+                    Text("I want to rest for")
+                    Spacer()
+                    TextField("I want to rest for", value: $restTime, formatter: formatter)
+                        .textFieldStyle(.roundedBorder)
+                }
                 
                 HStack {
                     Button(isRunning ? "Stop" : "Start") {
