@@ -71,6 +71,8 @@ struct ContentView: View {
         NavigationStack {
             VStack(alignment: .center) {
                 TextField("I want to work for", value: $workTime, formatter: formatter)
+                TextField("I want to rest for", value: $restTime, formatter: formatter)
+                
                 Text(status)
                     .fontWeight(.bold)
                     .font(.largeTitle)
@@ -96,11 +98,12 @@ struct ContentView: View {
                 HStack {
                     Button(isRunning ? "Stop" : "Start") {
                         isRunning.toggle()
-                        timeRemaining = TimeInterval(workTime)
                         
                         if isRunning {
+                            timeRemaining = TimeInterval(workTime)
                             StartTimer()
                         } else {
+                            timeRemaining = TimeInterval(restTime)
                             StopTimer()
                         }
                     }
