@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var restTime = 60
-    @State private var workTime = 90
-    @State private var timeRemaining: TimeInterval = 90
+    @State private var restTime = 10
+    @State private var workTime = 30
+    @State private var timeRemaining: TimeInterval = 30
     @State private var timer: Timer?
     @State private var isRunning: Bool = false
     @State private var onBreak: Bool = true
@@ -70,8 +70,19 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .center) {
-                TextField("I want to work for", value: $workTime, formatter: formatter)
-                TextField("I want to rest for", value: $restTime, formatter: formatter)
+                HStack {
+                    Text("I want to work for")
+                    Spacer()
+                    TextField("I want to work for", value: $workTime, formatter: formatter)
+                        .textFieldStyle(.roundedBorder)
+                }
+             
+                HStack {
+                    Text("I want to rest for")
+                    Spacer()
+                    TextField("I want to rest for", value: $restTime, formatter: formatter)
+                        .textFieldStyle(.roundedBorder)
+                }
                 
                 Text(status)
                     .fontWeight(.bold)
@@ -100,10 +111,8 @@ struct ContentView: View {
                         isRunning.toggle()
                         
                         if isRunning {
-                            timeRemaining = TimeInterval(workTime)
                             StartTimer()
                         } else {
-                            timeRemaining = TimeInterval(restTime)
                             StopTimer()
                         }
                     }
