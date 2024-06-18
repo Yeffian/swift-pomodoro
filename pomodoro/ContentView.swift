@@ -37,6 +37,14 @@ struct ContentView: View {
             return "Get working!"
         }
     }
+    
+    var timeToUse: Int {
+        if onBreak {
+            return restTime
+        } else {
+            return workTime
+        }
+    }
         
     func GetTimeFmt() -> String {
         let minutes = Int(timeRemaining) / 60
@@ -93,7 +101,7 @@ struct ContentView: View {
                         .stroke(lineWidth: 20)
                         .opacity(0.3)
                     Circle()
-                        .trim(from: 0, to: CGFloat(1 - timeRemaining / Double(workTime)))
+                        .trim(from: 0, to: CGFloat(1 - timeRemaining / Double(timeToUse)))
                         .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
                         .foregroundStyle(timerColor)
                         .rotationEffect(.degrees(-90))
