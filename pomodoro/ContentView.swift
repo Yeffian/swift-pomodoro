@@ -40,9 +40,9 @@ struct ContentView: View {
     
     var timeToUse: Int {
         if onBreak {
-            return restTime
+            return restTime * 60
         } else {
-            return workTime
+            return workTime * 60
         }
     }
         
@@ -59,9 +59,9 @@ struct ContentView: View {
         timer?.invalidate()
         
         if onBreak {
-            timeRemaining = TimeInterval(restTime)
+            timeRemaining = TimeInterval(restTime * 60)
         } else {
-            timeRemaining = TimeInterval(workTime)
+            timeRemaining = TimeInterval(workTime * 60)
         }
     }
     
