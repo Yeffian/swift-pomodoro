@@ -58,11 +58,7 @@ struct ContentView: View {
         isRunning = false
         timer?.invalidate()
         
-        if onBreak {
-            timeRemaining = TimeInterval(restTime * 60)
-        } else {
-            timeRemaining = TimeInterval(workTime * 60)
-        }
+        timeRemaining = TimeInterval(timeToUse)
     }
     
     func StartTimer() {
