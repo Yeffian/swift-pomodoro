@@ -42,7 +42,7 @@ struct ContentView: View {
         if onBreak {
             return restTime * 60
         } else {
-            return workTime * 60
+            return workTime * 60    
         }
     }
         
@@ -74,7 +74,7 @@ struct ContentView: View {
     let bgColor = Color("background")
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 VStack(alignment: .center) {
                     Text(status)
@@ -132,8 +132,6 @@ struct ContentView: View {
                 .padding(.horizontal, 40)
                 .navigationTitle("Pomodoro Timer")
             }
-            .background(Color("background"))
-            .ignoresSafeArea()
         }
     }
 }
