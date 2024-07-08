@@ -76,7 +76,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.orange.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                if onBreak {
+                    Color.indigo.edgesIgnoringSafeArea(.all)
+                } else {
+                    Color.orange.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                }
                 
                 VStack(alignment: .center) {
                     Text(status)
