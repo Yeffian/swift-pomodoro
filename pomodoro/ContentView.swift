@@ -75,63 +75,66 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
-                Text(status)
-                    .fontWeight(.bold)
-                    .font(.largeTitle)
+            ZStack {
+                Color.orange.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 
-                ZStack {
-                    Circle()
-                        .stroke(lineWidth: 20)
-                        .opacity(0.3)
-                    Circle()
-                        .trim(from: 0, to: CGFloat(1 - timeRemaining / Double(timeToUse)))
-                        .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                        .foregroundStyle(timerColor)
-                        .rotationEffect(.degrees(-90))
-                    
-                    Text(GetTimeFmt())
-                        .font(.largeTitle)
+                VStack(alignment: .center) {
+                    Text(status)
                         .fontWeight(.bold)
+                        .font(.largeTitle)
                     
-                }
-                .padding()
-                .frame(maxWidth: 500)
-                
-                HStack {
-                    Text("I want to work for")
-                    Spacer()
-                    TextField("I want to work for", value: $workTime, formatter: formatter)
-                        .textFieldStyle(.roundedBorder)
-                }
-             
-                HStack {
-                    Text("I want to rest for")
-                    Spacer()
-                    TextField("I want to rest for", value: $restTime, formatter: formatter)
-                        .textFieldStyle(.roundedBorder)
-                }
-                
-                HStack {
-                    Button(isRunning ? "Stop" : "Start") {
-                        isRunning.toggle()
+                    ZStack {
+                        Circle()
+                            .stroke(lineWidth: 20)
+                            .opacity(0.3)
+                        Circle()
+                            .trim(from: 0, to: CGFloat(1 - timeRemaining / Double(timeToUse)))
+                            .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                            .foregroundStyle(timerColor)
+                            .rotationEffect(.degrees(-90))
                         
-                        if isRunning {
-                            StartTimer()
-                        } else {
-                            StopTimer()
-                        }
+                        Text(GetTimeFmt())
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
                     }
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
-                    .frame(width: 100, height: 100)
-                    .font(.title)
+                    .padding()
+                    .frame(maxWidth: 500)
+                    
+                    HStack {
+                        Text("I want to work for")
+                        Spacer()
+                        TextField("I want to work for", value: $workTime, formatter: formatter)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                 
+                    HStack {
+                        Text("I want to rest for")
+                        Spacer()
+                        TextField("I want to rest for", value: $restTime, formatter: formatter)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                    
+                    HStack {
+                        Button(isRunning ? "Stop" : "Start") {
+                            isRunning.toggle()
+                            
+                            if isRunning {
+                                StartTimer()
+                            } else {
+                                StopTimer()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                        .frame(width: 100, height: 100)
+                        .font(.title)
+                    }
                 }
+                .padding(.horizontal, 40)
+                .navigationTitle("Pomodoro Timer")
+                .ignoresSafeArea()
             }
-            .padding(.horizontal, 40)
-            .navigationTitle("Pomodoro Timer")
-            .background(Color.green)
-            .ignoresSafeArea()
         }
     }
 }
