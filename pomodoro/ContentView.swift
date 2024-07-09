@@ -111,6 +111,7 @@ struct ContentView: View {
                         TextField("I want to work for", value: $workTime, formatter: formatter)
                             .textFieldStyle(.roundedBorder)
                     }
+
                  
                     HStack {
                         Text("I want to rest for")
@@ -118,6 +119,7 @@ struct ContentView: View {
                         TextField("I want to rest for", value: $restTime, formatter: formatter)
                             .textFieldStyle(.roundedBorder)
                     }
+
                     
                     HStack {
                         Button(isRunning ? "Stop" : "Start") {
@@ -130,6 +132,7 @@ struct ContentView: View {
                             }
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(onBreak ? .blue : .brown)
                         .buttonBorderShape(.capsule)
                         .frame(width: 100, height: 100)
                         .font(.title)
