@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var restTime = 10
-    @State private var workTime = 30
+    @AppStorage("restTime") private var restTime = 10
+    @AppStorage("workTIme") private var workTime = 30
     @State private var timeRemaining: TimeInterval = 30
     @State private var timer: Timer?
     @State private var isRunning: Bool = false
